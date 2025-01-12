@@ -1,4 +1,4 @@
-![alt tag]meow.gif)
+![alt tag](meow.gif)
 
 meow
 ====
