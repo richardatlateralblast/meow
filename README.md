@@ -15,7 +15,7 @@ If information is missing from the file or tags, it will try to fix the data or 
 Version
 =======
 
-Current version 0.2.0
+Current version 0.2.1
 
 Requirements
 ============
@@ -23,6 +23,8 @@ Requirements
 Required standard python modules:
 
 - argparse
+- datetime
+- pathlib
 - sys
 - os
 - re

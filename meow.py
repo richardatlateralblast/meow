@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Name:         meow (MP3 tag Editor Organiser Writer)
-# Version:      0.1.3
+# Version:      0.2.1
 # Release:      1
 # License:      CC-BA (Creative Commons By Attrbution)
 #               http://creativecommons.org/licenses/by/4.0/legalcode
@@ -32,6 +32,7 @@ import os
 import re
 
 from pathlib import Path
+from datetime import datetime
 
 # Set some defaults
 
@@ -193,8 +194,13 @@ def build_file_name():
     album_name = os.path.basename(dir_name)
     if re.search("-", album_name):
       album_name = re.split("-", album_name)[1]
-    if re.search(r"2[0-9][0-9][0-9]", album_name):
-      temp_name = re.split(r"2[0-9][0-9][0-9]", album_name)[1]
+    if re.search(r"[1,2][0-9][0-9][0-9]", album_name):
+      match = re.search(r"\d{4}", album_name)
+      year  = match.group()
+      options['year'] =year
+      message = f"Setting Year to \"{year}\""
+      information_message(message)
+      temp_name = re.split(r"[1,2][0-9][0-9][0-9]", album_name)[1]
       if not re.search(r"[0-9]|[A-Z]|[a-z]", temp_name):
         temp_name = re.split(r"2[0-9][0-9][0-9]", album_name)[0]
       album_name = temp_name
